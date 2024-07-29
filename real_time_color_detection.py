@@ -2,6 +2,10 @@
 import cv2
 import pandas as pd
 import time
+import logging
+
+# Configure logging
+logging.basicConfig(filename='real_time_color_detection.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
 # Load the color data
 index = ['color', 'color_name', 'hex', 'R', 'G', 'B']
@@ -28,6 +32,8 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
         display_time = time.time()
+        color_name = getColorName(r, g, b)
+        logging.info(f'{color_name} R={r} G={g} B={b}')
 
 
 clicked = False
